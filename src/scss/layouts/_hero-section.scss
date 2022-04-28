@@ -1,0 +1,124 @@
+@use '../utils/breakpoints';
+@use '../utils/keyframes';
+
+.hero-section {
+    // background: #212121;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // min-height: 100vh;
+    background: url('../../images/background.svg');
+    padding: 1rem 0 3rem 0;
+
+}
+
+.herobox {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    > .headerbox {
+        > .imagebox {
+            width: 8rem;
+        }
+    }
+
+    > .bannerbox {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        > .imagebox {
+            width: 50%;
+            align-self: center;
+
+            transform: translateY(0);
+            animation: 6s ease-in-out;
+            animation-iteration-count: infinite;
+
+            @include keyframes.animation-keyframes(float) {
+                0% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        > .contentbox {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            > .ratebox {
+                display: none;
+                gap: 1rem;
+
+                > .starbox {
+                    > .icon {
+                        color: #ff962a;
+                    } 
+                }
+
+                > .ratings {
+                    color: #e9f5f3;
+                    font-weight: bold; 
+                }
+            }
+
+            > .title {
+                font-weight: bold;
+                color: #8ad0be;
+                font-size: 2rem;
+            }
+
+            > .description {
+                color: #e9f5f3;
+            }
+
+            > .cta-btn {
+                width: 10rem;
+            }
+        }
+
+        @include breakpoints.media-breakpoint-up(400px) {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        @include breakpoints.media-breakpoint-up(768px) {
+            display: grid;
+            grid-template-columns: 1fr 40%;
+            align-items: center;
+            padding-left: 0;
+            padding-right: 0;
+
+            > .imagebox {
+                width: initial;
+                order: 2;
+            }
+
+            > .contentbox {
+                > .ratebox {
+                    display: flex;
+                }
+
+                > .title {
+                    font-size: 2.2rem;
+                }
+            }
+        }
+
+        @include breakpoints.media-breakpoint-up(900px) {
+            > .contentbox {
+                > .title {
+                    font-size: 2.7rem;
+                }
+            }
+        }
+    }
+}

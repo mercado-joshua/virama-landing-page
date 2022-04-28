@@ -1,0 +1,28 @@
+@use '../utils/breakpoints';
+
+.footer-section {
+    background: url('../../images/background.svg');
+    padding: 1rem 0;
+}
+
+.footerbox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+
+    > .imagebox {
+        width: 8rem;
+    }
+
+    > .description {
+        text-align: center;
+        color: #e9f5f3;
+        margin: 0;
+    }
+
+    @include breakpoints.media-breakpoint-up(768px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
